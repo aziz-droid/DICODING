@@ -54,10 +54,41 @@
     background: orange;
 }
 
+.history {
+    width: 80%;
+    margin: 30px auto 0 auto;
+    overflow: scroll;
+    box-shadow: 5px 10px 5px #888888;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: orange;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #d2d2d2;
+}
+
 @media screen and (max-width:500px) {
     .button {
         font-size: 13px;
         font-weight: bold;
 
+    }
+
+    .button {
+        padding: 10px;
+    }
+
+    .history {
+        width: 100%;
     }
 }

@@ -10,31 +10,35 @@
 </head>
 
 <body>
-    <ul>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-    </ul>
+    <p>button ini diklik sebanyak <span id="angka"></span> kali</p>
+    <button id="button">Klik saya</button>
+    <button id="clearButton">Clear</button>
 </body>
 <script>
-    let ulAll = document.getElementsByTagName("li");
-
-    let urut = 1;
-    for (var i = 0; i < ulAll.length; i++) {
-        if (urut <= 5) {
-            ulAll[i].innerHTML = 'List ' + urut;
-        } else {
-            ulAll[i].innerHTML = '<a href="#" style="color:red; text-decoration:none;">List ' + urut + '</a>';
+    const cacheKey = 'NUMBER';
+    if (typeof (Storage) !== 'undefined') {
+        if (localStorage.getItem(cacheKey) === 'undefined') {
+            localStorage.setItem(cacheKey, 0);
         }
-        urut++;
-    }  
+        const angka = document.querySelector('#angka');
+        const button = document.querySelector('#button');
+        const hapus = document.querySelector('#clearButton');
+        button.addEventListener('click', function (event) {
+            let number = localStorage.getItem(cacheKey)
+            number++;
+            localStorage.setItem(cacheKey, number);
+            angka.innerHTML = localStorage.getItem(cacheKey);
+        });
+
+        hapus.addEventListener('click', function (event) {
+            localStorage.removeItem(cacheKey);
+            angka.innerHTML = " ";
+        });
+    } else {
+        alert("storage tidak mendukung")
+    }
+
+
 </script>
 
 </html>
